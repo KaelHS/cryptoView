@@ -1,37 +1,17 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { FaRegStar } from "react-icons/fa";
-import { api } from "../services/api";
 import styles from "../styles/home.module.scss";
 import { useCoins } from "../hooks/useCoins";
 
-interface CoinProps {
-  id: string;
-  name: string;
-  symbol: string;
-  current_price: number;
-  image: string;
-  price_change_percentage_24h: number;
-  total_volume: number;
-}
+
 
 export default function Home() {
 
   const { search, filteredCoins } = useCoins();
 
-  // const [ cryptoList, setCryptoList ] = useState<CoinProps[]>([]);
-
-  // useEffect( () => {
-  //   api.get('/coins/markets', {
-  //     params: {
-  //       vs_currency: 'usd',
-  //       per_page: 50
-  //     }
-  //   }).then( ({data}) => setCryptoList(data));
-  // }, []);
-
   return (
-    <div className={styles.tableContent}>
+    <div className={styles.tableContainer}>
     <table>
       <thead>
         <tr>
