@@ -1,0 +1,69 @@
+.tableContent {
+
+    height: calc(100vh - 7rem);
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        width: 1rem;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    th, td {
+            padding: 0.75rem 0.5rem;
+            border-bottom: 1px solid var(--ligh-blue);
+        }
+    
+        th {
+            background: var(--blue);
+            text-transform: uppercase;
+            font-weight: 600;
+            font-family: 'Titillium Web', sans-serif;
+            font-size: 1rem;
+            text-align: left;
+            color: var(--cyan-500);
+            margin-bottom: 0.825rem;
+        }
+        td {
+            font-size: 0.875rem;
+            font-family: 'Titillium Web', sans-serif;
+            font-weight: 600;
+            color: var(--gray-50);
+
+            button {
+                display: inline-block;
+                width: 1rem;
+                height: 2rem;
+                border: none;
+                margin-right: 0.75rem;
+                background: transparent;
+                
+                img {
+                width: 1.1rem;
+                height: 1.3rem;
+                }
+            }
+
+            &:nth-child(5){
+                color: var(--green-500);
+            }
+
+            &.negative {
+                color: var(--red-500);
+            }
+
+
+
+            &:nth-child(2){
+                display: flex;
+                align-items: center;
+
+                p {
+                    margin-left: 1rem;
+                }
+            }
+        }
+
+}
