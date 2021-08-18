@@ -8,7 +8,7 @@ import { useCoins } from "../hooks/useCoins";
 
 export default function Home() {
 
-  const { search, filteredCoins } = useCoins();
+  const { filteredCoins } = useCoins();
 
   return (
     <div className={styles.tableContainer}>
