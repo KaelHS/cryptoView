@@ -1,9 +1,8 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { useCoins } from "../hooks/useCoins";
 import { api } from "../services/api";
 
-import styles from '../styles/home.module.scss';
+import styles from '../styles/table.module.scss';
 
 interface TrendingCoinsProps {
     score: number;
@@ -17,21 +16,25 @@ interface TrendingCoinsProps {
 export default function Trending() {
 
 
-    const { trendingCoins } = useCoins();
-
-
+    // const { trendingCoins } = useCoins();
+    const [trendingCoins, setTrendingCoins ] = useState<any[]>([]);
     const [ usdPrice, setUsdPrice ] = useState(0);
 
     useEffect(() => {
 
-        api.get('/simple/price', {
-            params: {
-                ids: 'bitcoin',
-                vs_currencies: 'usd'
-            }
-        }).then( ({data}) => setUsdPrice(data.bitcoin.usd));
 
-        console.log(usdPrice);
+        async function getData() {
+            
+
+            const btcUsd = await api.get('/simple/price?ids=bitcoin&vs_currencies=usd');
+            setUsdPrice(btcUsd.data.bitcoin.usd);
+
+            const trendingResponse = await api.get('/search/trending')
+            setTrendingCoins(trendingResponse.data.coins);
+        }
+
+        getData();
+
 
     },[])
 
@@ -43,7 +46,7 @@ export default function Trending() {
                         <th>#</th>
                         <th>Nome</th>
                         <th>Simbolo</th>
-                        <th>Preço ( BTC )</th>
+                        <th>Preço</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,11 +55,14 @@ export default function Trending() {
                             <tr key={tcoins.item.score}>
                                 <td>{tcoins.item.score +1}</td>
                                 <td>
-                                    {/* <Image src={tcoins.item.small} alt="simbol" width={20} height={20} /> */}
+                                    <Image src={tcoins.item.small} alt="simbol" width={20} height={20} />
                                     <p>{tcoins.item.name}</p>
                                 </td>
                                 <td>{tcoins.item.symbol}</td>
-                                <td>{tcoins.item.price_btc}</td>
+                                <td>
+                                {new Intl.NumberFormat('en-US' , {style: 'currency', currency: 'USD'}).format(tcoins.item.price_btc * usdPrice)}
+                                
+                                </td>
                             </tr>
                         ))}
                     </tbody>

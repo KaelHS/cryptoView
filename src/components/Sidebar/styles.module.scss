@@ -5,31 +5,56 @@
     background: var(--gray-900);
     padding: 2rem 1rem;
 
-    div {
+    .logo {
 
         display: flex;
         margin-bottom: 3rem;
 
         h1 {
             margin-left: 1rem;
+            color: var(--cyan-500);
         }
     }
 
-    ul {
-        list-style-type: none;
+    .blockContainer {
+        padding: 1rem;
+        display: block;
 
-        li {
-            display: flex;
-            padding: 1rem 1rem;
+        h1 {
+            margin-bottom: 1.5rem;
+            display: block;
+            padding: 0;
+            margin: 0;
+            color: var(--cyan-100);
+            font-size: 1.15rem;
+        }
 
-            p {
-                margin-left: 2rem;
-                font-size: 1rem;
-                color: var(--pink-500);
-            }
+        ul {
+            list-style: none;
+            margin: 1.25rem 1rem 0;
 
-            :hover {
-                background: var(--gray-850);
+            li {
+                padding: 0.5rem;
+
+                a {
+
+                    font-size: 1rem;
+                    transition: filter 0.2s;
+                    color: var(--gray-50);
+
+
+                    &.isActive {
+                        color: var(--yellow-500);
+                    }
+
+                    &:hover {
+                        filter: brightness(0.8);
+                    }
+
+                    &.isActive:hover {
+                        filter: brightness(1);
+                    }
+                }
             }
         }
     }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { FaRegStar } from "react-icons/fa";
-import styles from "../styles/home.module.scss";
+import styles from "../styles/table.module.scss";
 import { useCoins } from "../hooks/useCoins";
 
 

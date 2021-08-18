@@ -28,7 +28,6 @@ interface coinContextData {
     search: string;
     getFilter: (filter: string) => void;
     filteredCoins: CoinProps[];
-    trendingCoins: any[];
     usdPrice: number;
 }
 
@@ -38,22 +37,34 @@ export function CoinContextProvider ({children}: coinContextProviderProps){
 
     const [ search, setSearch ] = useState('');
     const [ coins, setCoins ] = useState<CoinProps[]>([]);
-    const [trendingCoins, setTrendingCoins ] = useState<any[]>([]);
 
     const [ usdPrice, setUsdPrice ] = useState(0);
 
 
     useEffect( () => {
-        api.get('/coins/markets', {
+
+      
+
+      async function getData(){
+
+        const marketsResponse = await api.get('/coins/markets', {
           params: {
             vs_currency: 'usd',
             per_page: 250, 
             order: 'market_cap_desc', //default
           }
-        }).then( ({data}) => setCoins(data));
+        })
+        setCoins(marketsResponse.data)
+
+
+
+
+      }
+
+
+      getData();
 
         
-        api.get('/search/trending').then( ({data}) => setTrendingCoins(data.coins));
     
 
       }, []);
@@ -65,7 +76,7 @@ export function CoinContextProvider ({children}: coinContextProviderProps){
     const filteredCoins = coins.filter( ( coin ) => coin.name.toLowerCase().includes(search.toLowerCase()));
       
     return(
-        <coinContext.Provider value={{ search, getFilter, filteredCoins, trendingCoins, usdPrice }}>
+        <coinContext.Provider value={{ search, getFilter, filteredCoins, usdPrice }}>
             {children}
         </coinContext.Provider>
     );
