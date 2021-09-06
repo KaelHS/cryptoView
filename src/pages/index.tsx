@@ -31,7 +31,7 @@ export default function Home() {
                 <Image src={coin.image} alt="Simbol" width={20} height={20} />
                 <p>{coin.name}</p>
               </td>
-              <td>{coin.symbol}</td>
+              <td>{coin.symbol.toUpperCase()}</td>
               <td>{  
                 new Intl.NumberFormat('en-US' , {style: 'currency', currency: 'USD'}).format(coin.current_price)
               }</td>

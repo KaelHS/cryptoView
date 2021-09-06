@@ -4,6 +4,11 @@ import Link from 'next/link';
 import styles from './styles.module.scss';
 import { ActiveLink } from '../ActiveLink';
 
+import { RiBitCoinFill } from 'react-icons/ri';
+import { HiTrendingUp } from 'react-icons/hi';
+import { IoStorefront } from 'react-icons/io5';
+import { MdEventNote } from 'react-icons/md';
+
 export function Sidebar(){
     return(
         <div className={styles.sidebarContainer}>
@@ -16,6 +21,7 @@ export function Sidebar(){
                 <h1>Ativos</h1>
                 <ul>
                     <li>
+                        <RiBitCoinFill size="1.25rem" color="var(--gray-50)"/>  
                         <ActiveLink activeClassName={styles.isActive} href="/">
                             <a>
                                 Criptomoedas
@@ -23,6 +29,7 @@ export function Sidebar(){
                         </ActiveLink>
                     </li>
                     <li>
+                        <HiTrendingUp size="1.25rem" color="var(--gray-50)"/>  
                         <ActiveLink activeClassName={styles.isActive} href="/trending">
                             <a>
                                 Trendings Coins
@@ -36,6 +43,7 @@ export function Sidebar(){
                 <h1>Úteis</h1>
                 <ul>
                     <li>
+                        <IoStorefront size="1.25rem" color="var(--gray-50)"/>  
                         <ActiveLink activeClassName={styles.isActive} href="/exchanges">
                             <a>
                                 Exchanges
@@ -43,6 +51,7 @@ export function Sidebar(){
                         </ActiveLink>
                     </li>
                     <li>
+                        <MdEventNote size="1.25rem" color="var(--gray-50)"/>  
                         <ActiveLink activeClassName={styles.isActive} href="/events">
                             <a>
                                 Eventos
