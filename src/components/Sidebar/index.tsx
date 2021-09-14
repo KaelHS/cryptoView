@@ -3,6 +3,7 @@ import { RiCoinsFill} from 'react-icons/ri';
 import Link from 'next/link';
 import styles from './styles.module.scss';
 import { ActiveLink } from '../ActiveLink';
+import { useCoins } from '../../hooks/useCoins';
 
 import { RiBitCoinFill } from 'react-icons/ri';
 import { HiTrendingUp } from 'react-icons/hi';
@@ -10,6 +11,16 @@ import { IoStorefront } from 'react-icons/io5';
 import { MdEventNote } from 'react-icons/md';
 
 export function Sidebar(){
+
+    const { getFilter, search } = useCoins();
+
+    const searchIsEmpty = () => {
+        if(search.length) {
+            getFilter('')
+        }
+
+    }
+
     return(
         <div className={styles.sidebarContainer}>
             <div className={styles.logo}>
@@ -20,7 +31,7 @@ export function Sidebar(){
             <div className={styles.blockContainer}>
                 <h1>Ativos</h1>
                 <ul>
-                    <li>
+                    <li onClick={() => getFilter('')}>
                         <RiBitCoinFill size="1.25rem" color="var(--gray-50)"/>  
                         <ActiveLink activeClassName={styles.isActive} href="/">
                             <a>
@@ -28,7 +39,7 @@ export function Sidebar(){
                             </a>
                         </ActiveLink>
                     </li>
-                    <li>
+                    <li onClick={() => getFilter('')}>
                         <HiTrendingUp size="1.25rem" color="var(--gray-50)"/>  
                         <ActiveLink activeClassName={styles.isActive} href="/trending">
                             <a>
@@ -42,7 +53,7 @@ export function Sidebar(){
             <div className={styles.blockContainer}>
                 <h1>Úteis</h1>
                 <ul>
-                    <li>
+                    <li onClick={() => getFilter('')}>
                         <IoStorefront size="1.25rem" color="var(--gray-50)"/>  
                         <ActiveLink activeClassName={styles.isActive} href="/exchanges">
                             <a>
@@ -50,7 +61,7 @@ export function Sidebar(){
                             </a>
                         </ActiveLink>
                     </li>
-                    <li>
+                    <li onClick={searchIsEmpty}>
                         <MdEventNote size="1.25rem" color="var(--gray-50)"/>  
                         <ActiveLink activeClassName={styles.isActive} href="/events">
                             <a>

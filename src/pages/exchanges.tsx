@@ -33,34 +33,34 @@ export default function Exchanges() {
 
     return(
         <div className={styles.tableContainer}>
-        <table>
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Nome</th>
-                    <th>Localização</th>
-                    <th>Score</th>
-                    <th>Site</th>
-                </tr>
-            </thead>
-            <tbody>
-                    { filteredExchanges && filteredExchanges.map( (company, index) => (
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nome</th>
+                        <th>Localização</th>
+                        <th>Score</th>
+                        <th>Site</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        { filteredExchanges && filteredExchanges.map( (company, index) => (
 
-                        <tr key={company.id}>
-                            <td>{index+1}</td>
-                            <td>
-                                <Image src={company.image} alt="simbol" width={20} height={20} />
-                                <p>{company.name}</p>
-                            </td>
-                            <td>{company.country}</td>
-                            <td>{company.trust_score}</td>
-                            <td>
-                                <Link href={company.url}><a target="_blank">{company.url}</a></Link>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-        </table>
-    </div>
+                            <tr key={company.id}>
+                                <td>{index+1}</td>
+                                <td>
+                                    <Image src={company.image} alt="simbol" width={20} height={20} />
+                                    <p>{company.name}</p>
+                                </td>
+                                <td>{company.country}</td>
+                                <td>{company.trust_score}</td>
+                                <td className={styles.weblink}>
+                                    <Link href={company.url}><a target="_blank">{company.url}</a></Link>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+            </table>
+        </div>
     );
 }

@@ -5,7 +5,7 @@
     padding: 0 1rem;
 
     &::-webkit-scrollbar {
-        width: 1rem;
+        display: none;
     }
 
     table {
@@ -64,6 +64,14 @@
                 p {
                     margin-left: 1rem;
                 }
+            }
+
+            &.weblink {
+                max-width: 150px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                color: white;
             }
         }
 

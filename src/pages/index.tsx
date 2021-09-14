@@ -5,7 +5,6 @@ import styles from "../styles/table.module.scss";
 import { useCoins } from "../hooks/useCoins";
 
 
-
 export default function Home() {
 
   const { filteredCoins } = useCoins();

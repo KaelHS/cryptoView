@@ -41,7 +41,7 @@ export default function Events() {
                             <td>{event.title}</td>
                             <td>{event.organizer}</td>
                             <td>{event.city}</td>
-                            <td>
+                            <td className={styles.weblink}>
                                 <Link href={event.website}><a target="_blank">{event.website}</a></Link>
                             </td>
                         </tr>
